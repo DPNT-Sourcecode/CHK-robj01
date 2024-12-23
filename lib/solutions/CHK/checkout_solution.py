@@ -13,9 +13,8 @@ def checkout(skus):
             self.price = price
             self.count = 0
 
-        @staticmethod
-        def offer():
-            return None
+        def items_price(self):
+            return self.price * self.count
 
         @staticmethod
         def cross_offer():
@@ -25,9 +24,8 @@ def checkout(skus):
         def __init__(self):
             super().__init__("A", 50)
 
-        @staticmethod
-        def offer():
-            count = A.count
+        def offer(self):
+            count = self.count
             total_item_value = 0
 
             total_item_value += (count // 5) * 200
@@ -90,6 +88,7 @@ def checkout(skus):
     for item in skus_counter.values():
 
     return basket_value
+
 
 
 
