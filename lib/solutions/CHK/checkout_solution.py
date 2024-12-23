@@ -66,33 +66,29 @@ def checkout(skus):
         def cross_offer(self):
             B.count -= 1
 
-    A, B, C, D, E = A(), B(), C(), D(), E()
+    skus_counter = Counter(skus)
 
-    price_table = {"A": A,
+    A, B, C, D, E = (A(price=50, count=skus_counter["A"]),
+                     B(price=30, count=skus_counter["B"]),
+                     C(price=20, count=skus_counter["C"]),
+                     D(price=15, count=skus_counter["D"]),
+                     E(price=40, count=skus_counter["E"]))
+
+    items_table = {"A": A,
                    "B": B,
                    "C": C,
                    "D": D,
                    "E": E}
 
-    skus_counter = Counter(skus)
     for item, count in skus_counter.items():
-        if item not in price_table.keys(): return -1
-
-        item_object = price_table[item]
-        item_object.count = count
-        item_object.cross_offer()
+        if item not in items_table.keys(): return -1
+        items_table[item].cross_offer()
 
     basket_value = 0
-    for item in skus_counter.values():
+    for item in items_table.values():
+        basket_value += item.total_price()
 
     return basket_value
-
-
-
-
-
-
-
 
 
 
