@@ -75,13 +75,12 @@ def checkout(skus):
         def __init__(self, items):
             self.items = items
             self.sum = sum([item.count for item in items])
-            print(self.sum)
 
         def total_price(self):
             current_price = 0
-            self.items[0].count -= 1
+            self.count = self.sum // 3
+            self.modulo  = self.sum % 3
             return current_price
-
 
     skus_counter = Counter(skus)
 
@@ -191,6 +190,7 @@ def checkout(skus):
         basket_value += item.total_price()
 
     return basket_value
+
 
 
 
