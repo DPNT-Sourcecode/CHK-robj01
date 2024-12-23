@@ -28,7 +28,7 @@ def checkout(skus):
             self.second_offer_price = second_offer_price
 
         def total_price(self):
-            count = self.count
+            count = max(self.count, 0)
             total_price = 0
 
             total_price += (count // self.first_offer_count) * self.first_offer_price
@@ -51,9 +51,9 @@ def checkout(skus):
             count = max(self.count, 0)
             total_price = 0
 
-            total_price += (count // 2) * 45
+            total_price += (count // self.offer_count) * self.offer_price
 
-            count = count % 2
+            count = count % self.offer_count
             total_price += count * self.price
 
             return total_price
@@ -84,14 +84,17 @@ def checkout(skus):
 
     skus_counter = Counter(skus)
 
-    A = A(name="A", price=50, count=skus_counter["A"])
-    B = B(name="B", price=30, count=skus_counter["B"])
+    A = two_level_offer_item(name="A", price=50, count=skus_counter["A"],
+                             first_offer_count=5, first_offer_price=200,
+                             second_offer_count=3, second_offer_price=130)
+    B = one_level_offer_item(name="B", price=30, count=skus_counter["B"],
+                             offer_count=2, offer_price=45)
     C = item(name="C", price=20, count=skus_counter["C"])
     D = item(name="D", price=15, count=skus_counter["D"])
     E = E(name="E", price=40, count=skus_counter["E"])
     F = F(name="F", price=10, count=skus_counter["F"])
     G = item(name="G", price=20, count=skus_counter["G"])
-    H = H(name="H", price=10, count=skus_counter["H"])
+    H = two_level_offer_item(name="H", price=10, count=skus_counter["H"])
     I = item(name="I", price=35, count=skus_counter["I"])
     J = item(name="J", price=60, count=skus_counter["J"])
     K = K(name="K", price=80, count=skus_counter["K"])
@@ -105,7 +108,7 @@ def checkout(skus):
     S = item(name="S", price=30, count=skus_counter["S"])
     T = item(name="T", price=20, count=skus_counter["T"])
     U = U(name="U", price=40, count=skus_counter["U"])
-    V = V(name="V", price=50, count=skus_counter["V"])
+    V = two_level_offer_item(name="V", price=50, count=skus_counter["V"])
     W = item(name="W", price=20, count=skus_counter["W"])
     X = item(name="X", price=90, count=skus_counter["X"])
     Y = item(name="Y", price=10, count=skus_counter["Y"])
@@ -153,6 +156,7 @@ def checkout(skus):
         basket_value += item.total_price()
 
     return basket_value
+
 
 
 
