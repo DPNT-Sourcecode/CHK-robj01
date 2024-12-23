@@ -65,17 +65,15 @@ def checkout(skus):
 
         def cross_offer(self):
             B.count -= (E.count // 2)
-"""
-    class quantity_offer_item(item): #F
-        def __init__(self, name, price, count, offer_count):
-            super().__init__(name, price, count)
 
-        def total_price(self):
-            count = self.count
-            count -= count // 3
-            return count * self.price
-"""
-
+    # class quantity_offer_item(item): #F
+    #     def __init__(self, name, price, count, offer_count):
+    #         super().__init__(name, price, count)
+    #
+    #     def total_price(self):
+    #         count = self.count
+    #         count -= count // 3
+    #         return count * self.price
 
 
     skus_counter = Counter(skus)
@@ -92,12 +90,19 @@ def checkout(skus):
     D = item(name="D", price=15, count=skus_counter["D"])
 
     E = E(name="E", price=40, count=skus_counter["E"])
-    F = F(name="F", price=10, count=skus_counter["F"])
+
+    F = one_level_offer_item(name="F", price=10, count=skus_counter["F"],
+                             offer_count=3, offer_price=20)
+
     G = item(name="G", price=20, count=skus_counter["G"])
-    H = two_level_offer_item(name="H", price=10, count=skus_counter["H"])
+
+    H = two_level_offer_item(name="H", price=10, count=skus_counter["H"],
+                             first_offer_count=10, first_offer_price=80,
+                             second_offer_count=5, second_offer_price=45)
+
     I = item(name="I", price=35, count=skus_counter["I"])
     J = item(name="J", price=60, count=skus_counter["J"])
-    K = K(name="K", price=80, count=skus_counter["K"])
+    K = one_level_offer_item(name="K", price=80, count=skus_counter["K"])
     L = item(name="L", price=90, count=skus_counter["L"])
     M = item(name="M", price=15, count=skus_counter["M"])
     N = N(name="N", price=40, count=skus_counter["N"])
@@ -156,6 +161,7 @@ def checkout(skus):
         basket_value += item.total_price()
 
     return basket_value
+
 
 
 
