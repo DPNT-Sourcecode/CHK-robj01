@@ -101,22 +101,45 @@ def checkout(skus):
                              second_offer_count=5, second_offer_price=45)
 
     I = item(name="I", price=35, count=skus_counter["I"])
+
     J = item(name="J", price=60, count=skus_counter["J"])
-    K = one_level_offer_item(name="K", price=80, count=skus_counter["K"])
+
+    K = one_level_offer_item(name="K", price=80, count=skus_counter["K"],
+                             offer_count=2, offer_price=150)
+
     L = item(name="L", price=90, count=skus_counter["L"])
+
     M = item(name="M", price=15, count=skus_counter["M"])
+
     N = N(name="N", price=40, count=skus_counter["N"])
+
     O = item(name="O", price=10, count=skus_counter["O"])
-    P = P(name="P", price=50, count=skus_counter["P"])
-    Q = Q(name="Q", price=30, count=skus_counter["Q"])
+
+    P = one_level_offer_item(name="P", price=50, count=skus_counter["P"],
+                             offer_count=5, offer_price=200)
+
+    Q = one_level_offer_item(name="Q", price=30, count=skus_counter["Q"],
+                             offer_count=3, offer_price=80)
+
     R = R(name="R", price=50, count=skus_counter["R"])
+
     S = item(name="S", price=30, count=skus_counter["S"])
+
     T = item(name="T", price=20, count=skus_counter["T"])
-    U = U(name="U", price=40, count=skus_counter["U"])
-    V = two_level_offer_item(name="V", price=50, count=skus_counter["V"])
+
+    U = one_level_offer_item(name="U", price=40, count=skus_counter["U"],
+                             offer_count=4, offer_price=120)
+
+    V = two_level_offer_item(name="V", price=50, count=skus_counter["V"],
+                             first_offer_count=3, first_offer_price=130,
+                             second_offer_count=2, second_offer_price=90)
+
     W = item(name="W", price=20, count=skus_counter["W"])
+
     X = item(name="X", price=90, count=skus_counter["X"])
+
     Y = item(name="Y", price=10, count=skus_counter["Y"])
+
     Z = item(name="Z", price=50, count=skus_counter["Z"])
 
     items_range = {"A", "B", "C", "D", "E", "F",
@@ -161,6 +184,7 @@ def checkout(skus):
         basket_value += item.total_price()
 
     return basket_value
+
 
 
 
