@@ -9,6 +9,8 @@ class offer:
         self.single = single
         self.multi = multi
 
+    def
+
 class A():
     def __init__(self):
         self.price = 50
@@ -32,7 +34,10 @@ class D():
 class E():
     def __init__(self):
         self.price = 40
-        self.offer = offer(single=False, multi=True)
+        self.cross_offer = self.cross_offer
+
+    class cross_offer:
+        def apply(count):
 
 
 def checkout(skus):
@@ -50,7 +55,8 @@ def checkout(skus):
         if item not in price_table.keys(): return -1
 
         item_object = price_table[item]
-        if item_object.price > total_price:
+        item_object.offer.multi.apply()
+
 
 
 
