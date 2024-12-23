@@ -75,6 +75,28 @@ def checkout(skus):
     D = item(name="D", price=15, count=skus_counter["D"])
     E = E(name="E", price=40, count=skus_counter["E"])
     F = F(name="F", price=10, count=skus_counter["F"])
+    G = item(name="G", price=20, count=skus_counter["G"])
+    H = item(name="C", price=20, count=skus_counter["C"])
+    I = item(name="C", price=20, count=skus_counter["C"])
+    J = item(name="C", price=20, count=skus_counter["C"])
+    K = item(name="C", price=20, count=skus_counter["C"])
+    L = item(name="C", price=20, count=skus_counter["C"])
+    M = item(name="C", price=20, count=skus_counter["C"])
+    N = item(name="C", price=20, count=skus_counter["C"])
+    O = item(name="C", price=20, count=skus_counter["C"])
+    P = item(name="C", price=20, count=skus_counter["C"])
+    Q = item(name="C", price=20, count=skus_counter["C"])
+    R = item(name="C", price=20, count=skus_counter["C"])
+    S = item(name="C", price=20, count=skus_counter["C"])
+    T = item(name="C", price=20, count=skus_counter["C"])
+    U = item(name="C", price=20, count=skus_counter["C"])
+    V = item(name="C", price=20, count=skus_counter["C"])
+    W = item(name="C", price=20, count=skus_counter["C"])
+    X = item(name="C", price=20, count=skus_counter["C"])
+    Y = item(name="C", price=20, count=skus_counter["C"])
+    Z = item(name="C", price=20, count=skus_counter["C"])
+
+
 
     items_table = {"A": A,
                    "B": B,
@@ -92,6 +114,7 @@ def checkout(skus):
         basket_value += item.total_price()
 
     return basket_value
+
 
 
 
