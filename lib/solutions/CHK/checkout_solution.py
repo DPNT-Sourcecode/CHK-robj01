@@ -9,12 +9,12 @@ class item:
 
     class cross_offer:
         @staticmethod
-        def apply(count):
+        def get(count):
             pass
 
     class offer:
         @staticmethod
-        def apply(count):
+        def get(count):
             pass
 
 class A(item):
@@ -36,9 +36,6 @@ class E(item):
     def __init__(self):
         super().__init__("E", 40)
 
-
-
-
 def checkout(skus):
 
     price_table = {"A": A(),
@@ -56,13 +53,7 @@ def checkout(skus):
         item_object = price_table[item]
         item_object.count = count
 
-
-
-
-
-
-
-
+        print(item_object.count)
 
 
 
