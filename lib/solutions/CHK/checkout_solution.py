@@ -86,7 +86,7 @@ def checkout(skus):
             count = self.sum // self.offer_count
             modulo = self.sum % self.offer_count
 
-            current_price += count * self.offer_price + sum([item for item in items])
+            current_price += count * self.offer_price + sum([price for item in self.items for price in range(item.count)][:modulo])
 
             return current_price
 
@@ -197,6 +197,7 @@ def checkout(skus):
         basket_value += item.total_price()
 
     return basket_value
+
 
 
 
