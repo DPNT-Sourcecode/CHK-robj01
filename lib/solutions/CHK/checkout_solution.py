@@ -70,6 +70,7 @@ def checkout(skus):
             super().__init__("F", price, count)
 
         def total_price(self):
+            count = self.count
 
     skus_counter = Counter(skus)
 
@@ -95,4 +96,5 @@ def checkout(skus):
         basket_value += item.total_price()
 
     return basket_value
+
 
