@@ -65,14 +65,20 @@ def checkout(skus):
         def cross_offer(self):
             B.count -= (E.count // 2)
 
+    class F(item):
+        def __init__(self, price, count):
+            super().__init__("F", price, count)
+
+        def total_price(self):
+
     skus_counter = Counter(skus)
 
     A = A(price=50, count=skus_counter["A"])
-    B = B(price=50, count=skus_counter["B"])
-    C = C(price=50, count=skus_counter["C"])
-    D = D(price=50, count=skus_counter["D"])
-    E = E(price=50, count=skus_counter["E"])
-    F = F(price=50, count=skus_counter["F"])
+    B = B(price=30, count=skus_counter["B"])
+    C = C(price=20, count=skus_counter["C"])
+    D = D(price=15, count=skus_counter["D"])
+    E = E(price=40, count=skus_counter["E"])
+    F = F(price=10, count=skus_counter["F"])
 
     items_table = {"A": A,
                    "B": B,
@@ -89,3 +95,4 @@ def checkout(skus):
         basket_value += item.total_price()
 
     return basket_value
+
