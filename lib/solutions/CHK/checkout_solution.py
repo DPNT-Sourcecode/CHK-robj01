@@ -6,21 +6,21 @@ class item:
     def __init__(self, name, price):
         self.name = name
         self.price = price
+        self.count = 0
 
     class cross_offer:
         @staticmethod
-        def get(count):
+        def get():
             return None
 
     class offer:
         @staticmethod
-        def get(count):
+        def get():
             return None
 
 class A(item):
     def __init__(self):
         super().__init__("A", 50)
-        self.count = 0
 
     class offer:
         @staticmethod
@@ -64,6 +64,11 @@ class E(item):
     def __init__(self):
         super().__init__("E", 40)
 
+    class cross_offer:
+        @staticmethod
+        def get():
+            B.count -= 1
+
 def checkout(skus):
 
     price_table = {"A": A(),
@@ -82,6 +87,7 @@ def checkout(skus):
         item_object.count = count
 
         print(item_object.count)
+
 
 
 
