@@ -68,8 +68,7 @@ def checkout(skus):
 
         @staticmethod
         def cross_offer():
-            B.count = B.count - 1 if B.count >= 1 else 0
-            print("Applied!")
+            B.count -= 1
 
     A, B, C, D, E = A(), B(), C(), D(), E()
 
@@ -85,13 +84,13 @@ def checkout(skus):
 
         item_object = price_table[item]
         item_object.count = count
+        item_object.cross_offer()
 
-    for item in price_table.values():
-        item.cross_offer.get()
-
-    basket_value = basket
+    basket_value = 0
+    for item in skus_counter.values():
 
     return basket_value
+
 
 
 
