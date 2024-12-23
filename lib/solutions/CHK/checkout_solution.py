@@ -10,32 +10,32 @@ class item:
         self.price = price
 
 class A(item):
-    def __init__(self, price):
+    def __init__(self):
         super().__init__(name, price)
 
 class B(item):
-    def __init__(self, price):
+    def __init__(self):
         super().__init__(name, price)
 
 class C(item):
-    def __init__(self, price):
+    def __init__(self):
         super().__init__(name, price)
 
 class D(item):
-    def __init__(self, price):
+    def __init__(self):
         super().__init__(name, price)
 
 class E(item):
-    def __init__(self, price):
+    def __init__(self):
         super().__init__(name, price)
 
 def checkout(skus):
 
-    price_table = {"A": A()},
-                   "B": {"price": 30, "offer": {"count": 2, "price": 45}},
-                   "C": {"price": 20, "offer": None},
-                   "D": {"price": 15, "offer": None},
-                   "E": {"price": 40, "offer": None},}
+    price_table = {"A": A(),
+                   "B": B(),
+                   "C": C(),
+                   "D": D(),
+                   "E": E()}
 
     total_price = 0
 
@@ -55,6 +55,7 @@ def checkout(skus):
             total_price += (count//offer_count) * offer_price + (count%offer_count) * item_price
 
     return total_price
+
 
 
 
