@@ -141,7 +141,7 @@ def checkout(skus):
     R = cross_offer_item(name="R", price=50, count=skus_counter["R"],
                          offer_count=3, cross_item="Q")
 
-    S = group.offer_item(group=group, name="S", price=20, count=skus_counter["S"])
+    S = item(name="S", price=20, count=skus_counter["S"])
 
     T = item(name="T", price=20, count=skus_counter["T"])
 
@@ -187,16 +187,19 @@ def checkout(skus):
                     "Y": Y,
                     "Z": Z}
 
+    group_items = group_offer(items=[X, Y, S, T, Z], offer_count=3, offer_price=45)
+
     for item, count in skus_counter.items():
         if item not in items_table.keys(): return -1
         items_table[item].cross_offer()
 
-    basket_value = group.total_price()
+    basket_value = group_items.total_price()
     print(Z.count)
     for item in items_table.values():
         basket_value += item.total_price()
 
     return basket_value
+
 
 
 
