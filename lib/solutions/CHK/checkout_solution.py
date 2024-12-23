@@ -18,7 +18,7 @@ def checkout(skus):
         def cross_offer(self):
             return None
 
-    class two_level_offer_item(item):
+    class two_level_offer_item(item): #A
         def __init__(self, name, price, count, first_offer_count, first_offer_price, second_offer_count, second_offer_price):
             super().__init__(name, price, count)
 
@@ -40,7 +40,7 @@ def checkout(skus):
             total_price += count * self.price
             return total_price
 
-    class one_level_offer_item(item):
+    class one_level_offer_item(item): #B
         def __init__(self, name, price, count, offer_count, offer_price):
             super().__init__(name, price, count)
 
@@ -59,27 +59,23 @@ def checkout(skus):
             return total_price
 
 
-    class E(item):
+    class cross_offer_item(item): #E
         def __init__(self, name, price, count):
             super().__init__(name, price, count)
 
         def cross_offer(self):
             B.count -= (E.count // 2)
-
-    class F(item):
-        def __init__(self, name, price, count):
+"""
+    class quantity_offer_item(item): #F
+        def __init__(self, name, price, count, offer_count):
             super().__init__(name, price, count)
 
         def total_price(self):
             count = self.count
             count -= count // 3
             return count * self.price
+"""
 
-    class H(item):
-        def __init__(self, name, price, count):
-            super().__init__(name, price, count)
-
-        def total_price(self):
 
 
     skus_counter = Counter(skus)
@@ -87,10 +83,14 @@ def checkout(skus):
     A = two_level_offer_item(name="A", price=50, count=skus_counter["A"],
                              first_offer_count=5, first_offer_price=200,
                              second_offer_count=3, second_offer_price=130)
+
     B = one_level_offer_item(name="B", price=30, count=skus_counter["B"],
                              offer_count=2, offer_price=45)
+
     C = item(name="C", price=20, count=skus_counter["C"])
+
     D = item(name="D", price=15, count=skus_counter["D"])
+
     E = E(name="E", price=40, count=skus_counter["E"])
     F = F(name="F", price=10, count=skus_counter["F"])
     G = item(name="G", price=20, count=skus_counter["G"])
@@ -156,6 +156,7 @@ def checkout(skus):
         basket_value += item.total_price()
 
     return basket_value
+
 
 
 
