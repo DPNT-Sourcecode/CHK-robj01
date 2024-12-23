@@ -13,44 +13,43 @@ def checkout(skus):
             self.price = price
             self.count = 0
 
-        def items_price(self):
+        def total_price(self):
             return self.price * self.count
 
-        @staticmethod
-        def cross_offer():
+        def cross_offer(self):
             return None
 
     class A(item):
         def __init__(self):
             super().__init__("A", 50)
 
-        def offer(self):
+        def total_price(self):
             count = self.count
-            total_item_value = 0
+            total_price = 0
 
-            total_item_value += (count // 5) * 200
+            total_price += (count // 5) * 200
 
             count = count % 5
-            total_item_value += (count // 3) * 130
+            total_price += (count // 3) * 130
 
             count = count % 3
-            total_item_value += count * 50
-            return total_item_value
+            total_price += count * 50
+            return total_price
 
     class B(item):
         def __init__(self):
             super().__init__("B", 30)
 
-        @staticmethod
-        def get(count):
-            total_item_value = 0
+        def total_price(self):
+            count = self.count
+            total_price = 0
 
-            total_item_value += (count // 2) * 45
+            total_price += (count // 2) * 45
 
             count = count % 2
-            total_item_value += count * 30
+            total_price += count * 30
 
-            return total_item_value
+            return total_price
 
     class C(item):
         def __init__(self):
@@ -64,8 +63,7 @@ def checkout(skus):
         def __init__(self):
             super().__init__("E", 40)
 
-        @staticmethod
-        def cross_offer():
+        def cross_offer(self):
             B.count -= 1
 
     A, B, C, D, E = A(), B(), C(), D(), E()
@@ -88,6 +86,7 @@ def checkout(skus):
     for item in skus_counter.values():
 
     return basket_value
+
 
 
 
