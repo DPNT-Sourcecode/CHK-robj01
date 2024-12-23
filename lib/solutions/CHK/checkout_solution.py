@@ -67,11 +67,12 @@ def checkout(skus):
 
     skus_counter = Counter(skus)
 
-    A, B, C, D, E = (A(price=50, count=skus_counter["A"]),
-                     B(price=30, count=skus_counter["B"]),
-                     C(price=20, count=skus_counter["C"]),
-                     D(price=15, count=skus_counter["D"]),
-                     E(price=40, count=skus_counter["E"]))
+    A = A(price=50, count=skus_counter["A"])
+    B = B(price=50, count=skus_counter["B"])
+    C = C(price=50, count=skus_counter["C"])
+    D = D(price=50, count=skus_counter["D"])
+    E = E(price=50, count=skus_counter["E"])
+    F = F(price=50, count=skus_counter["F"])
 
     items_table = {"A": A,
                    "B": B,
