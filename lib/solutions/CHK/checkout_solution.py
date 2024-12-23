@@ -5,10 +5,17 @@ from collections import Counter
 
 class item:
 
-    def __init__(self, name, price, offer=False):
+    def __init__(self, name, price):
         self.name = name
         self.price = price
-        self.offer = offer
+
+class A(item):
+    def __init__(self):
+        super().__init__(name, price)
+        self.offer = True
+
+    def offer(self, count):
+
 def checkout(skus):
 
     price_table = {"A": {"price": 50, "offer": {"count": 3, "price": 130}},
@@ -35,4 +42,5 @@ def checkout(skus):
             total_price += (count//offer_count) * offer_price + (count%offer_count) * item_price
 
     return total_price
+
 
