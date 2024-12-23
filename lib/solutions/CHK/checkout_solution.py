@@ -14,7 +14,7 @@ def checkout(skus):
             self.count = count
 
         def total_price(self):
-            return self.price * self.count
+            return max(self.price * self.count, 0)
 
         def cross_offer(self):
             return None
