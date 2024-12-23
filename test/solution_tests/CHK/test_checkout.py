@@ -5,4 +5,3 @@ class TestCheckout():
     def test_checkout(self):
         assert checkout_solution.checkout("STTTXXXXYZ") == 0
 
-

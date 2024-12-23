@@ -73,9 +73,9 @@ def checkout(skus):
 
     class group_offer:
 
-         def __init__(self, items, offer_count, offer_price):
-             self.items = items
-             self.sum = sum([item.count for item in items])
+         def __init__(self, items_map, offer_count, offer_price):
+             self.items_map = items_map
+             self.sum = sum([item.count for item in items_map.values()])
 
              self.offer_count = offer_count
              self.offer_price = offer_price
@@ -86,7 +86,7 @@ def checkout(skus):
             count = self.sum // self.offer_count
             modulo = self.sum % self.offer_count
 
-            current_price += count * self.offer_price + sum([item.price for item in self.items for _ in range (item.count)][:modulo])
+            current_price += count * self.offer_price + sum([item.price for item in self.items_map.values() for _ in range (item.count)][:modulo])
 
             return current_price
 
@@ -182,18 +182,18 @@ def checkout(skus):
                     "V": V,
                     "W": W}
 
-    items_group_0 = { "S": S,
-                      "T": T,
-                      "X": X,
-                      "Y": Y,
-                      "Z": Z
+    items_group_0 = {
+        "X": X,
+        "Y": Y,
+        "S": S,
+        "T": T,
+        "Z": Z
     }
 
-    group_items = group_offer(items=[X, Y, S, T, Z], offer_count=3, offer_price=45)
-    group_items_set = {"S", "T", "X", "Y", "Z"}
+    group_items = group_offer(items_map=items_group_0, offer_count=3, offer_price=45)
 
     for item, count in skus_counter.items():
-        if item not in items_table.keys() and item not in group_items_set: return -1
+        if item not in items_table.keys() and item not in items_group_0.keys(): return -1
         items_table[item].cross_offer()
 
     basket_value = group_items.total_price()
@@ -203,9 +203,3 @@ def checkout(skus):
     print(basket_value)
 
     return basket_value
-
-
-
-
-
-
