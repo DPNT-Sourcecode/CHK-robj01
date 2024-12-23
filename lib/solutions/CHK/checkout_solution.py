@@ -182,6 +182,13 @@ def checkout(skus):
                     "V": V,
                     "W": W}
 
+    items_group_0 = { "S": S,
+                      "T": T,
+                      "X": X,
+                      "Y": Y,
+                      "Z": Z
+    }
+
     group_items = group_offer(items=[X, Y, S, T, Z], offer_count=3, offer_price=45)
     group_items_set = {"S", "T", "X", "Y", "Z"}
 
@@ -196,6 +203,7 @@ def checkout(skus):
     print(basket_value)
 
     return basket_value
+
 
 
 
