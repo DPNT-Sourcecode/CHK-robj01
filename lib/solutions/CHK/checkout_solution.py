@@ -1,12 +1,11 @@
 from collections import Counter
 
+
 # noinspection PyUnusedLocal
 # skus = unicode string
 
 
-
 def checkout(skus):
-
     class item:
         def __init__(self, name, price, count=0):
             self.name = name
@@ -41,7 +40,7 @@ def checkout(skus):
             super().__init__("B", price, count)
 
         def total_price(self):
-            count = self.count
+            count = max(self.count, 0)
             total_price = 0
 
             total_price += (count // 2) * 45
@@ -65,7 +64,6 @@ def checkout(skus):
 
         def cross_offer(self):
             B.count -= (E.count // 2)
-            print(B.count, E.count)
 
     skus_counter = Counter(skus)
 
@@ -87,11 +85,6 @@ def checkout(skus):
 
     basket_value = 0
     for item in items_table.values():
-        print(basket_value)
         basket_value += item.total_price()
 
     return basket_value
-
-
-
-
