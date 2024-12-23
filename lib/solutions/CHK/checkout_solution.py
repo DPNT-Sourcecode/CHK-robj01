@@ -67,6 +67,12 @@ def checkout(skus):
             count -= count // 3
             return count * self.price
 
+    class H(item):
+        def __init__(self, name, price, count):
+            super().__init__(name, price, count)
+
+        def total_price(self):
+
     skus_counter = Counter(skus)
 
     A = A(name="A", price=50, count=skus_counter["A"])
@@ -138,5 +144,6 @@ def checkout(skus):
         basket_value += item.total_price()
 
     return basket_value
+
 
 
