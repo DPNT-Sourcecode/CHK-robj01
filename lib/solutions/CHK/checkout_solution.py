@@ -92,7 +92,9 @@ def checkout(skus):
         item_object = price_table[item]
         item_object.count = count
 
-        print(item_object.count)
+    print(A.count, B.count, C.count, D.count, E.count)
+
+    return None
 
 
 
