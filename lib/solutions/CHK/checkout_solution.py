@@ -8,10 +8,10 @@ from collections import Counter
 def checkout(skus):
 
     class item:
-        def __init__(self, name, price):
+        def __init__(self, name, price, count=0):
             self.name = name
             self.price = price
-            self.count = 0
+            self.count = count
 
         def total_price(self):
             return self.price * self.count
@@ -20,8 +20,8 @@ def checkout(skus):
             return None
 
     class A(item):
-        def __init__(self):
-            super().__init__("A", 50)
+        def __init__(self, price, count):
+            super().__init__("A", price, count)
 
         def total_price(self):
             count = self.count
@@ -37,8 +37,8 @@ def checkout(skus):
             return total_price
 
     class B(item):
-        def __init__(self):
-            super().__init__("B", 30)
+        def __init__(self, price, count):
+            super().__init__("B", price, count)
 
         def total_price(self):
             count = self.count
@@ -52,16 +52,16 @@ def checkout(skus):
             return total_price
 
     class C(item):
-        def __init__(self):
-            super().__init__("C", 20)
+        def __init__(self, price, count):
+            super().__init__("C", price, count)
 
     class D(item):
-        def __init__(self):
-            super().__init__("D", 15)
+        def __init__(self, price, count):
+            super().__init__("D", price, count)
 
     class E(item):
-        def __init__(self):
-            super().__init__("E", 40)
+        def __init__(self, price, count):
+            super().__init__("E", price, count)
 
         def cross_offer(self):
             B.count -= 1
@@ -86,6 +86,7 @@ def checkout(skus):
     for item in skus_counter.values():
 
     return basket_value
+
 
 
 
