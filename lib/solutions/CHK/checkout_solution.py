@@ -82,6 +82,16 @@ def checkout(skus):
         def cross_offer(self):
             self.group.insert(self)
 
+    class group:
+
+        def __init__(self):
+            self.items = []
+
+        class offer_item(item):
+            def __init__(self, name, price, count):
+                super().__init__(name, price, count)
+                
+
     skus_counter = Counter(skus)
 
     A = two_level_offer_item(name="A", price=50, count=skus_counter["A"],
@@ -187,3 +197,4 @@ def checkout(skus):
         basket_value += item.total_price()
 
     return basket_value
+
