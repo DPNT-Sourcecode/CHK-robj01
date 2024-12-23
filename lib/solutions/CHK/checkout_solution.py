@@ -74,7 +74,8 @@ def checkout(skus):
         def __init__(self, name, price, count):
             super().__init__(name, price, count)
 
-        def cross_offer(self):
+        def total_price(self):
+            return 0
 
     skus_counter = Counter(skus)
 
@@ -181,5 +182,6 @@ def checkout(skus):
         basket_value += item.total_price()
 
     return basket_value
+
 
 
