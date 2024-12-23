@@ -3,35 +3,36 @@ from collections import Counter
 # noinspection PyUnusedLocal
 # skus = unicode string
 
-class A:
+class offer:
+
+    def __init__(self, single, multi):
+        self.single = single
+        self.multi = multi
+
+class A(offer):
     def __init__(self):
         self.price = 50
-        self.offer = True
-        self.multi_offer = False
+        super().__init__(single=True, multi=False)
 
-class B:
+class B(offer):
     def __init__(self):
         self.price = 30
-        self.offer = True
-        self.multi_offer = False
+        super().__init__(single=True, multi=False)
 
-class C:
+class C(offer):
     def __init__(self):
         self.price = 20
-        self.offer = True
-        self.multi_offer = False
+        super().__init__(single=False, multi=False)
 
-class D:
+class D(offer):
     def __init__(self):
         self.price = 15
-        self.offer = True
-        self.multi_offer = False
+        super().__init__(single=False, multi=False)
 
-class E:
+class E(offer):
     def __init__(self):
         self.price = 40
-        self.offer = False
-        self.multi_offer = False
+        super().__init__(single=False, multi=True)
 
 
 def checkout(skus):
@@ -54,6 +55,7 @@ def checkout(skus):
         count = skus_counter[item]
 
         total_price += count * price
+
 
 
 
