@@ -36,8 +36,8 @@ def checkout(skus):
             return total_price
 
     class B(item):
-        def __init__(self, price, count):
-            super().__init__("B", price, count)
+        def __init__(self, name, price, count):
+            super().__init__(name, price, count)
 
         def total_price(self):
             count = max(self.count, 0)
@@ -50,24 +50,17 @@ def checkout(skus):
 
             return total_price
 
-    class C(item):
-        def __init__(self, price, count):
-            super().__init__("C", price, count)
-
-    class D(item):
-        def __init__(self, price, count):
-            super().__init__("D", price, count)
 
     class E(item):
-        def __init__(self, price, count):
-            super().__init__("E", price, count)
+        def __init__(self, name, price, count):
+            super().__init__(name, price, count)
 
         def cross_offer(self):
             B.count -= (E.count // 2)
 
     class F(item):
-        def __init__(self, price, count):
-            super().__init__("F", price, count)
+        def __init__(self, name, price, count):
+            super().__init__(name, price, count)
 
         def total_price(self):
             count = self.count
@@ -77,11 +70,11 @@ def checkout(skus):
     skus_counter = Counter(skus)
 
     A = A(name="A", price=50, count=skus_counter["A"])
-    B = B(price=30, count=skus_counter["B"])
-    C = item("C", price=20, count=skus_counter["C"])
-    D = item("D", price=15, count=skus_counter["D"])
-    E = E(price=40, count=skus_counter["E"])
-    F = F(price=10, count=skus_counter["F"])
+    B = B(name="B", price=30, count=skus_counter["B"])
+    C = item(name="C", price=20, count=skus_counter["C"])
+    D = item(name="D", price=15, count=skus_counter["D"])
+    E = E(name="E", price=40, count=skus_counter["E"])
+    F = F(name="F", price=10, count=skus_counter["F"])
 
     items_table = {"A": A,
                    "B": B,
@@ -99,6 +92,7 @@ def checkout(skus):
         basket_value += item.total_price()
 
     return basket_value
+
 
 
 
