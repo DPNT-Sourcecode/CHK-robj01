@@ -18,26 +18,34 @@ def checkout(skus):
         def cross_offer(self):
             return None
 
-    class A(item):
-        def __init__(self, name, price, count):
+    class two_level_offer_item(item):
+        def __init__(self, name, price, count, first_offer_count, first_offer_price, second_offer_count, second_offer_price):
             super().__init__(name, price, count)
+
+            self.first_offer_count = first_offer_count
+            self.first_offer_price = first_offer_price
+            self.second_offer_count = second_offer_count
+            self.second_offer_price = second_offer_price
 
         def total_price(self):
             count = self.count
             total_price = 0
 
-            total_price += (count // 5) * 200
+            total_price += (count // self.first_offer_count) * self.first_offer_price
 
-            count = count % 5
-            total_price += (count // 3) * 130
+            count = count % self.first_offer_count
+            total_price += (count // self.second_offer_count) * self.second_offer_price
 
-            count = count % 3
+            count = count % self.second_offer_count
             total_price += count * self.price
             return total_price
 
-    class B(item):
-        def __init__(self, name, price, count):
+    class one_level_offer_item(item):
+        def __init__(self, name, price, count, offer_count, offer_price):
             super().__init__(name, price, count)
+
+            self.offer_count = offer_count
+            self.offer_price = offer_price
 
         def total_price(self):
             count = max(self.count, 0)
@@ -72,6 +80,7 @@ def checkout(skus):
             super().__init__(name, price, count)
 
         def total_price(self):
+
 
     skus_counter = Counter(skus)
 
@@ -144,6 +153,7 @@ def checkout(skus):
         basket_value += item.total_price()
 
     return basket_value
+
 
 
 
