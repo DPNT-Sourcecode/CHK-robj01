@@ -64,7 +64,7 @@ def checkout(skus):
             super().__init__(name, price, count)
 
             self.offer_count = offer_count
-            self.cross_item = items_table[cross_item]
+            self.cross_item = cross_item
 
         def cross_offer(self):
             self.cross_item.count -= (self.count // self.offer_count)
@@ -115,7 +115,8 @@ def checkout(skus):
 
     M = item(name="M", price=15, count=skus_counter["M"])
 
-    N = N(name="N", price=40, count=skus_counter["N"])
+    N = cross_offer_item(name="N", price=40, count=skus_counter["N"],
+                         offer_count=3, cross_item="M")
 
     O = item(name="O", price=10, count=skus_counter["O"])
 
@@ -125,7 +126,8 @@ def checkout(skus):
     Q = one_level_offer_item(name="Q", price=30, count=skus_counter["Q"],
                              offer_count=3, offer_price=80)
 
-    R = R(name="R", price=50, count=skus_counter["R"])
+    R = cross_offer_item(name="R", price=50, count=skus_counter["R"],
+                         offer_count=3, cross_item="Q")
 
     S = item(name="S", price=30, count=skus_counter["S"])
 
@@ -145,12 +147,6 @@ def checkout(skus):
     Y = item(name="Y", price=10, count=skus_counter["Y"])
 
     Z = item(name="Z", price=50, count=skus_counter["Z"])
-
-    items_range = {"A", "B", "C", "D", "E", "F",
-                   "G", "H", "I", "J", "K", "L",
-                   "M", "N", "O", "P", "Q", "R",
-                   "S", "T", "U", "V", "W", "X",
-                   "Y", "Z"}
 
     items_table = { "A": A,
                     "B": B,
@@ -188,12 +184,3 @@ def checkout(skus):
         basket_value += item.total_price()
 
     return basket_value
-
-
-
-
-
-
-
-
-
