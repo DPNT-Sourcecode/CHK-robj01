@@ -2,6 +2,13 @@ from collections import Counter
 
 # noinspection PyUnusedLocal
 # skus = unicode string
+
+class item:
+
+    def __init__(self, name, price, offer=False):
+        self.name = name
+        self.price = price
+        self.offer = offer
 def checkout(skus):
 
     price_table = {"A": {"price": 50, "offer": {"count": 3, "price": 130}},
@@ -9,6 +16,7 @@ def checkout(skus):
                    "C": {"price": 20, "offer": None},
                    "D": {"price": 15, "offer": None},
                    "E": {"price": 40, "offer": None},}
+
     total_price = 0
 
     skus_counter = Counter(skus)
@@ -27,3 +35,4 @@ def checkout(skus):
             total_price += (count//offer_count) * offer_price + (count%offer_count) * item_price
 
     return total_price
+
