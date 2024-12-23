@@ -32,7 +32,7 @@ def checkout(skus):
             total_price += (count // 3) * 130
 
             count = count % 3
-            total_price += count * 50
+            total_price += count * self.price
             return total_price
 
     class B(item):
@@ -46,7 +46,7 @@ def checkout(skus):
             total_price += (count // 2) * 45
 
             count = count % 2
-            total_price += count * 30
+            total_price += count * self.price
 
             return total_price
 
@@ -71,6 +71,8 @@ def checkout(skus):
 
         def total_price(self):
             count = self.count
+            count -= count // 3
+            return count * self.price
 
     skus_counter = Counter(skus)
 
@@ -85,7 +87,8 @@ def checkout(skus):
                    "B": B,
                    "C": C,
                    "D": D,
-                   "E": E}
+                   "E": E,
+                   "F": F}
 
     for item, count in skus_counter.items():
         if item not in items_table.keys(): return -1
