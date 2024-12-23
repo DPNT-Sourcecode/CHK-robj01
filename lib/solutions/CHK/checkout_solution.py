@@ -17,26 +17,23 @@ def checkout(skus):
                    item("C",20),
                    item("D",15),
                    item("E",40)]
-
     offer = ["A", "B"]
     cross_offer = ["E"]
 
-    skus_counter = Counter(skus)
     total_price = 0
-    for item in cross_offer:
 
-    total_price = skus_counter.pop()
-
+    skus_counter = Counter(skus)
     for item, count in skus_counter.items():
         if item not in price_table.keys(): return -1
 
-        item_price = price_table[item]["price"]
+    for item in cross_offer:
 
-        if not price_table[item]["offer"]:
-            total_price += item_price * count
-        else:
-            offer_count = price_table[item]["offer"]["count"]
-            offer_price = price_table[item]["offer"]["price"]
+        price = price_table[item].price
+        count = skus_counter[item]
+        
+        total_price += count * price
 
-            total_price += (count//offer_count) * offer_price + (count%offer_count) * item_price
+
+
+
 
