@@ -90,7 +90,11 @@ def checkout(skus):
         class offer_item(item):
             def __init__(self, name, price, count):
                 super().__init__(name, price, count)
-                
+
+            @staticmethod
+            def insert_item():
+                group.items.append(item)
+
 
     skus_counter = Counter(skus)
 
@@ -197,4 +201,5 @@ def checkout(skus):
         basket_value += item.total_price()
 
     return basket_value
+
 
