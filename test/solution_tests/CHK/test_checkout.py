@@ -3,4 +3,4 @@ from lib.solutions.CHK import checkout_solution
 
 class TestCheckout():
     def test_checkout(self):
-        assert checkout_solution.checkout("AAAAABBBCDEE") == 340
+        assert checkout_solution.checkout("AAAAAAABBCDEE") == 445

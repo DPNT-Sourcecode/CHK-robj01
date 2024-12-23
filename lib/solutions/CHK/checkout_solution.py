@@ -64,7 +64,7 @@ def checkout(skus):
             super().__init__("E", price, count)
 
         def cross_offer(self):
-            B.count -= 1
+            B.count -= (E.count // 2)
 
     skus_counter = Counter(skus)
 
