@@ -27,7 +27,3 @@ def checkout(skus):
             total_price += (count//offer_count) * offer_price + (count%offer_count) * item_price
 
     return total_price
-
-
-
-
