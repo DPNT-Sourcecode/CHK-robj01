@@ -13,7 +13,14 @@ def checkout(skus):
             self.price = price
             self.count = 0
 
-        class cross_offer:
+        @staticmethod
+        def offer():
+            return None
+
+        @staticmethod
+        def cross_offer():
+            return None
+            
             @staticmethod
             def get():
                 return None
@@ -98,13 +105,14 @@ def checkout(skus):
 
     total_price = 0
 
+    item_check()
     item_count()
-    print(A.count, B.count, C.count, D.count, E.count)
     cross_offer_get()
 
     print(A.count, B.count, C.count, D.count, E.count)
 
     return None
+
 
 
 
