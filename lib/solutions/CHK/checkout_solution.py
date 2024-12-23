@@ -19,7 +19,8 @@ def checkout(skus):
             return None
 
     class two_level_offer_item(item):
-        def __init__(self, name, price, count, first_offer_count, first_offer_price, second_offer_count, second_offer_price):
+        def __init__(self, name, price, count, first_offer_count, first_offer_price, second_offer_count,
+                     second_offer_price):
             super().__init__(name, price, count)
 
             self.first_offer_count = first_offer_count
@@ -58,7 +59,6 @@ def checkout(skus):
 
             return total_price
 
-
     class cross_offer_item(item):
         def __init__(self, name, price, count, offer_count, cross_item):
             super().__init__(name, price, count)
@@ -70,26 +70,25 @@ def checkout(skus):
             cross_item = items_table[self.cross_item]
             cross_item.count -= (self.count // self.offer_count)
 
-
     class group_offer:
 
-         def __init__(self, items_map, offer_count, offer_price):
-             self.items_map = items_map
-             self.sum = sum([item.count for item in items_map.values()])
+        def __init__(self, items_map, offer_count, offer_price):
+            self.items_map = items_map
+            self.sum = sum([item.count for item in items_map.values()])
 
-             self.offer_count = offer_count
-             self.offer_price = offer_price
+            self.offer_count = offer_count
+            self.offer_price = offer_price
 
-         def total_price(self):
+        def total_price(self):
             current_price = 0
 
             count = self.sum // self.offer_count
             modulo = self.sum % self.offer_count
 
-            current_price += count * self.offer_price + sum([item.price for item in self.items_map.values() for _ in range (item.count)][:modulo])
+            current_price += count * self.offer_price + sum(
+                [item.price for item in self.items_map.values() for _ in range(item.count)][:modulo])
 
             return current_price
-
 
     skus_counter = Counter(skus)
 
@@ -160,33 +159,33 @@ def checkout(skus):
 
     Z = item(name="Z", price=21, count=skus_counter["Z"])
 
-    items_table = { "A": A,
-                    "B": B,
-                    "C": C,
-                    "D": D,
-                    "E": E,
-                    "F": F,
-                    "G": G,
-                    "H": H,
-                    "I": I,
-                    "J": J,
-                    "K": K,
-                    "L": L,
-                    "M": M,
-                    "N": N,
-                    "O": O,
-                    "P": P,
-                    "Q": Q,
-                    "R": R,
-                    "U": U,
-                    "V": V,
-                    "W": W}
+    items_table = {"A": A,
+                   "B": B,
+                   "C": C,
+                   "D": D,
+                   "E": E,
+                   "F": F,
+                   "G": G,
+                   "H": H,
+                   "I": I,
+                   "J": J,
+                   "K": K,
+                   "L": L,
+                   "M": M,
+                   "N": N,
+                   "O": O,
+                   "P": P,
+                   "Q": Q,
+                   "R": R,
+                   "U": U,
+                   "V": V,
+                   "W": W}
 
     items_group_0 = {"X": X, "Y": Y, "S": S, "T": T, "Z": Z}
 
     group_items = group_offer(items_map=items_group_0, offer_count=3, offer_price=45)
     for item, count in skus_counter.items():
-        if item in items_group_0 and item in group_items:
+        if item in items_group_0: continue
         if item in items_table.keys():
             items_table[item].cross_offer()
             continue
@@ -196,8 +195,9 @@ def checkout(skus):
     for item in items_table.values():
         basket_value += item.total_price()
 
-    print(basket_value)
+    basket_value += group_items.total_price()
 
     return basket_value
+
 
 
