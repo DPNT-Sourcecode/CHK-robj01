@@ -85,7 +85,7 @@ def checkout(skus):
     class group:
 
         def __init__(self):
-            self.items = []
+            self.item = self.offer_item
 
         class offer_item(item):
             def __init__(self, name, price, count):
@@ -197,6 +197,3 @@ def checkout(skus):
         basket_value += item.total_price()
 
     return basket_value
-
-
-
