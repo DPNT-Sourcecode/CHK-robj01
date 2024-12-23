@@ -54,7 +54,8 @@ def checkout(skus):
         if item not in price_table.keys(): return -1
 
         item_object = price_table[item]
-        item_object.cross_offer.apply()
+        item_object.count = count
+
 
 
 
