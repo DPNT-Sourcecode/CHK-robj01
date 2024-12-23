@@ -14,14 +14,17 @@ def checkout(skus):
     for item, count in skus_counter.items():
         if item not in price_table.keys(): return -1
 
+        item_price = price_table[item]["price"]
+
         if not price_table[item]["offer"]:
-            total_price += price_table[item]["price"] * count
+            total_price += item_price * count
         else:
             offer_count = price_table[item]["offer"]["count"]
             offer_price = price_table[item]["offer"]["price"]
-            total_price += count//price_table[item]["offer"]["count"] * count
 
-    return None
+            total_price += (count//offer_count) * offer_price + (count%offer_count) * item_price
+
+    return total_price
 
 
 
