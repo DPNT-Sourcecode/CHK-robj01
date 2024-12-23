@@ -14,7 +14,7 @@ def checkout(skus):
             self.count = count
 
         def total_price(self):
-            return max(self.price * self.count, 0)
+            return self.price * max(self.count, 0)
 
         def cross_offer(self):
             return None
@@ -65,6 +65,7 @@ def checkout(skus):
 
         def cross_offer(self):
             B.count -= (E.count // 2)
+            print(B.count, E.count)
 
     skus_counter = Counter(skus)
 
@@ -86,6 +87,7 @@ def checkout(skus):
 
     basket_value = 0
     for item in items_table.values():
+        print(basket_value)
         basket_value += item.total_price()
 
     return basket_value
