@@ -20,10 +20,12 @@ class item:
 class A(item):
     def __init__(self):
         super().__init__("A", 50)
+        self.count = 0
 
     class offer:
         @staticmethod
-        def get(count):
+        def get():
+            count = A.count
             total_item_value = 0
 
             total_item_value += (count//5) * 200
@@ -40,7 +42,7 @@ class B(item):
 
     class offer:
         @staticmethod
-        def get(count=B.count):
+        def get(count):
             total_item_value = 0
 
             total_item_value += (count//2) * 45
@@ -80,6 +82,7 @@ def checkout(skus):
         item_object.count = count
 
         print(item_object.count)
+
 
 
 
