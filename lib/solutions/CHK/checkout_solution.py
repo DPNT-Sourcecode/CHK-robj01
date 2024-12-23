@@ -2,36 +2,11 @@ from collections import Counter
 
 # noinspection PyUnusedLocal
 # skus = unicode string
-
-class A(item):
-    def __init__(self):
-        self.name = "A"
-        self.price = 50
-
-class B(item):
-    def __init__(self):
-        self.name = "B"
-        self.price = 30
-
-class C(item):
-    def __init__(self):
-        self.name = "C"
-        self.price = 20
-
-class D(item):
-    def __init__(self):
-        self.name = "D"
-        self.price = 15
-
-class E(item):
-    def __init__(self):
-        super().__init__("E", 40)
-
-class item():
+class item:
     def __init__(self, name, price):
         self.name = name
         self.price = price
-        
+
     class cross_offer:
         @staticmethod
         def apply(count):
@@ -41,6 +16,27 @@ class item():
         @staticmethod
         def apply(count):
             pass
+
+class A(item):
+    def __init__(self):
+        super().__init__("A", 50)
+class B(item):
+    def __init__(self):
+        super().__init__("B", 30)
+
+class C(item):
+    def __init__(self):
+        super().__init__("C", 20)
+
+class D(item):
+    def __init__(self):
+        super().__init__("D", 15)
+
+class E(item):
+    def __init__(self):
+        super().__init__("E", 40)
+
+
 
 
 def checkout(skus):
@@ -58,7 +54,8 @@ def checkout(skus):
         if item not in price_table.keys(): return -1
 
         item_object = price_table[item]
-        item_object.offer.multi.apply()
+        item_object.cross_offer.apply()
+
 
 
 
