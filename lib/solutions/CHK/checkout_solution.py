@@ -67,7 +67,7 @@ class E(item):
     class cross_offer:
         @staticmethod
         def get():
-            B.count -= 1
+            B.count = B.count - 1 if B.count >= 1 else 0
 
 def checkout(skus):
 
@@ -87,6 +87,7 @@ def checkout(skus):
         item_object.count = count
 
         print(item_object.count)
+
 
 
 
