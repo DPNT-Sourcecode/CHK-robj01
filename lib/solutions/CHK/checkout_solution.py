@@ -74,6 +74,19 @@ def checkout(skus):
             @staticmethod
             def get():
                 B.count = B.count - 1 if B.count >= 1 else 0
+                print("Applied!")
+
+    def item_count():
+        skus_counter = Counter(skus)
+        for item, count in skus_counter.items():
+            if item not in price_table.keys(): return -1
+
+            item_object = price_table[item]
+            item_object.count = count
+
+    def cross_offer_get():
+        for item in price_table.values():
+            item.cross_offer.get()
 
     A, B, C, D, E = A(), B(), C(), D(), E()
 
@@ -85,16 +98,14 @@ def checkout(skus):
 
     total_price = 0
 
-    skus_counter = Counter(skus)
-    for item, count in skus_counter.items():
-        if item not in price_table.keys(): return -1
-
-        item_object = price_table[item]
-        item_object.count = count
+    item_count()
+    print(A.count, B.count, C.count, D.count, E.count)
+    cross_offer_get()
 
     print(A.count, B.count, C.count, D.count, E.count)
 
     return None
+
 
 
 
