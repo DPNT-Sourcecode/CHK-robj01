@@ -3,41 +3,44 @@ from collections import Counter
 # noinspection PyUnusedLocal
 # skus = unicode string
 
-class offer:
-
-    def __init__(self, single, multi):
-        self.single = single
-        self.multi = multi
-
-    def
-
-class A():
+class A(item):
     def __init__(self):
+        self.name = "A"
         self.price = 50
-        self.offer = offer(single=True, multi=False)
 
-class B():
+class B(item):
     def __init__(self):
+        self.name = "B"
         self.price = 30
-        self.offer = offer(single=True, multi=False)
 
-class C():
+class C(item):
     def __init__(self):
+        self.name = "C"
         self.price = 20
-        self.offer = offer(single=False, multi=False)
 
-class D():
+class D(item):
     def __init__(self):
+        self.name = "D"
         self.price = 15
-        self.offer = offer(single=False, multi=False)
 
-class E():
+class E(item):
     def __init__(self):
-        self.price = 40
-        self.cross_offer = self.cross_offer
+        super().__init__("E", 40)
 
+class item():
+    def __init__(self, name, price):
+        self.name = name
+        self.price = price
+        
     class cross_offer:
+        @staticmethod
         def apply(count):
+            pass
+
+    class offer:
+        @staticmethod
+        def apply(count):
+            pass
 
 
 def checkout(skus):
@@ -56,6 +59,7 @@ def checkout(skus):
 
         item_object = price_table[item]
         item_object.offer.multi.apply()
+
 
 
 
