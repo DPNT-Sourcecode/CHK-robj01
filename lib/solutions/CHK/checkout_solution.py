@@ -88,7 +88,7 @@ def checkout(skus):
 
             current_price += count * self.offer_price
 
-            print([item.price for item in self.items])
+            print([item.price * item.count for item in self.items])
 
             return current_price
 
@@ -200,5 +200,6 @@ def checkout(skus):
         basket_value += item.total_price()
 
     return basket_value
+
 
 

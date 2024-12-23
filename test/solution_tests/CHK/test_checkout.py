@@ -3,5 +3,6 @@ from lib.solutions.CHK import checkout_solution
 
 class TestCheckout():
     def test_checkout(self):
-        assert checkout_solution.checkout("STXYZ") == 0
+        assert checkout_solution.checkout("STTTXXXXYZ") == 0
+
 
