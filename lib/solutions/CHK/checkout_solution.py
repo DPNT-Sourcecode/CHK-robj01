@@ -19,8 +19,8 @@ def checkout(skus):
             return None
 
     class A(item):
-        def __init__(self, price, count):
-            super().__init__("A", price, count)
+        def __init__(self, name, price, count):
+            super().__init__(name, price, count)
 
         def total_price(self):
             count = self.count
@@ -76,10 +76,10 @@ def checkout(skus):
 
     skus_counter = Counter(skus)
 
-    A = A(price=50, count=skus_counter["A"])
+    A = A(name="A", price=50, count=skus_counter["A"])
     B = B(price=30, count=skus_counter["B"])
-    C = C(price=20, count=skus_counter["C"])
-    D = D(price=15, count=skus_counter["D"])
+    C = item("C", price=20, count=skus_counter["C"])
+    D = item("D", price=15, count=skus_counter["D"])
     E = E(price=40, count=skus_counter["E"])
     F = F(price=10, count=skus_counter["F"])
 
@@ -99,5 +99,6 @@ def checkout(skus):
         basket_value += item.total_price()
 
     return basket_value
+
 
 
