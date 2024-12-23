@@ -96,14 +96,38 @@ def checkout(skus):
     Y = item(name="Y", price=10, count=skus_counter["Y"])
     Z = item(name="Z", price=50, count=skus_counter["Z"])
 
+    items_range = {"A", "B", "C", "D", "E", "F",
+                   "G", "H", "I", "J", "K", "L",
+                   "M", "N", "O", "P", "Q", "R",
+                   "S", "T", "U", "V", "W", "X",
+                   "Y", "Z"}
 
-
-    items_table = {"A": A,
-                   "B": B,
-                   "C": C,
-                   "D": D,
-                   "E": E,
-                   "F": F}
+    items_table = { "A": A,
+                    "B": B,
+                    "C": C,
+                    "D": D,
+                    "E": E,
+                    "F": F,
+                    "G": G,
+                    "H": H,
+                    "I": I,
+                    "J": J,
+                    "K": K,
+                    "L": L,
+                    "M": M,
+                    "N": N,
+                    "O": O,
+                    "P": P,
+                    "Q": Q,
+                    "R": R,
+                    "S": S,
+                    "T": T,
+                    "U": U,
+                    "V": V,
+                    "W": W,
+                    "X": X,
+                    "Y": Y,
+                    "Z": Z}
 
     for item, count in skus_counter.items():
         if item not in items_table.keys(): return -1
@@ -114,4 +138,5 @@ def checkout(skus):
         basket_value += item.total_price()
 
     return basket_value
+
 
