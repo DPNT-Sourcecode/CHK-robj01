@@ -2,4 +2,5 @@ from lib.solutions.CHK import checkout_solution
 
 
 class TestCheckout():
-    pass
+    def test_checkout(self):
+        assert checkout_solution.checkout("AAABBCDD") == 1
