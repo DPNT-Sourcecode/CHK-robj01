@@ -8,8 +8,10 @@ class item:
     def __init__(self, name, price):
         self.name = name
         self.price = price
-        self.offer = False
-        self.cross_offer = False
+
+class A(item):
+    def __init__(self, name, price):
+        super().__init__(name, price)
 
 def checkout(skus):
 
@@ -37,6 +39,7 @@ def checkout(skus):
             total_price += (count//offer_count) * offer_price + (count%offer_count) * item_price
 
     return total_price
+
 
 
 
