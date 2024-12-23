@@ -9,30 +9,30 @@ class offer:
         self.single = single
         self.multi = multi
 
-class A(offer):
+class A():
     def __init__(self):
         self.price = 50
-        super().__init__(single=True, multi=False)
+        self.offer = offer(single=True, multi=False)
 
-class B(offer):
+class B():
     def __init__(self):
         self.price = 30
-        super().__init__(single=True, multi=False)
+        self.offer = offer(single=True, multi=False)
 
-class C(offer):
+class C():
     def __init__(self):
         self.price = 20
-        super().__init__(single=False, multi=False)
+        self.offer = offer(single=False, multi=False)
 
-class D(offer):
+class D():
     def __init__(self):
         self.price = 15
-        super().__init__(single=False, multi=False)
+        self.offer = offer(single=False, multi=False)
 
-class E(offer):
+class E():
     def __init__(self):
         self.price = 40
-        super().__init__(single=False, multi=True)
+        self.offer = offer(single=False, multi=True)
 
 
 def checkout(skus):
@@ -49,12 +49,9 @@ def checkout(skus):
     for item, count in skus_counter.items():
         if item not in price_table.keys(): return -1
 
-    for item in cross_offer:
+        item_object = price_table[item]
+        if item_object.price > total_price:
 
-        price = price_table[item].price
-        count = skus_counter[item]
-
-        total_price += count * price
 
 
 
