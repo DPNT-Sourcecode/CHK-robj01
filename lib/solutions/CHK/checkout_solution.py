@@ -99,8 +99,8 @@ def checkout(skus):
 
     J = item(name="J", price=60, count=skus_counter["J"])
 
-    K = one_level_offer_item(name="K", price=80, count=skus_counter["K"],
-                             offer_count=2, offer_price=150)
+    K = one_level_offer_item(name="K", price=70, count=skus_counter["K"],
+                             offer_count=2, offer_price=120)
 
     L = item(name="L", price=90, count=skus_counter["L"])
 
@@ -175,3 +175,4 @@ def checkout(skus):
         basket_value += item.total_price()
 
     return basket_value
+
